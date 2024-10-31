@@ -26,6 +26,20 @@ public class LibroServiceImpl implements LibroService {
     }
 
     @Override
+    public Optional<Libro> update(Long id, Libro libro) {
+        Optional<Libro> libroOptional = libroRepository.findById(id);
+        if (libroOptional.isPresent()) {
+            Libro libroToUpdate = libroOptional.get();
+            libroToUpdate.setTitulo(libro.getTitulo());
+            libroToUpdate.setAutor(libro.getAutor());
+            libroToUpdate.setAnioPublicacion(libro.getAnioPublicacion());
+            libroToUpdate.setGenero(libro.getGenero());
+            return Optional.of(libroRepository.save(libroToUpdate));
+        }
+        return Optional.empty();
+    }
+
+    @Override
     public Libro save(Libro libro) {
         return libroRepository.save(libro);
     }
