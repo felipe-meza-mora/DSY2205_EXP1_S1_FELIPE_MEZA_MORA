@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 
 @Entity
-@Table(name = "LIBRO")
+@Table(name = "LIBRO", schema = "SPRINGBOOT_FEL")
 public class Libro {
 
     @Id
